@@ -45,3 +45,6 @@ class check:
  
 obj = check()
 print("Address of class object = ",id(obj))
+
+obj2 = check()
+print("Address of class object = ",id(obj2))

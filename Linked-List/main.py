@@ -26,6 +26,32 @@ class LinkedList:
             return True
         else:
             return False
+        
+    def get_node(self, target_data):
+        """
+            Retrieves the node with the specified data value in the linked list.
+
+            Parameters:
+                - target_data: The data value to search for in the linked list.
+
+            Returns:
+                - Node: A reference to the first node with the specified data value.
+                    Returns None if the data value is not found in the linked list.
+
+            Example:
+                >>> linked_list = LinkedList()
+                >>> node_with_data_2 = linked_list.get_node(2)
+                >>> print(node_with_data_2.data)  # Output: 2
+        """
+        current_node = self.__head
+
+        while current_node:
+            if current_node.data == target_data:
+                return current_node
+            current_node = current_node.nextPointer
+
+        return None  # Node with the specified data value not found
+
 
     def print_list(self):
         """
@@ -94,37 +120,53 @@ class LinkedList:
         last_Node.nextPointer = new_Node  # Set the next pointer of the last node to the new node
 
 
+    def insertionAtMiddleOfNode(self, prev_node, data):
+        """
+            Inserts a new node with the given data after a specified node.
+
+            Parameters:
+                - prev_node: The node after which the new node should be inserted.
+                - data: The data to be inserted in the new node.
+
+            Returns:
+                - None: Modifies the linked list in place.
+
+            Example:
+                >>> linked_list = LinkedList()
+                >>> linked_list.insert_at_head(1)
+                >>> linked_list.insert_at_head(0)
+                >>> middle_node = linked_list.get_node(0)  # Get a reference to the middle node
+                >>> linked_list.insertion_at_middle(middle_node, 5)
+                >>> linked_list.print_list()
+                0 -> 5 -> 1 -> None
+        """
+
+        new_node = Node(data)
+        if prev_node == None:
+            print("Previous node is not linked list")
+            return
+
+        new_node.nextPointer = prev_node.nextPointer
+        prev_node.nextPointer = new_node
+
 linked_list = LinkedList()
 
 print("Original Linked List:")
 linked_list.print_list()
 
 linked_list.insertionAtHeadOfNode(1)
-linked_list.print_list()
-
 linked_list.insertionAtHeadOfNode(2)
-linked_list.print_list()
-
 linked_list.insertionAtHeadOfNode(3)
-linked_list.print_list()
-
 linked_list.insertionAtHeadOfNode(4)
-linked_list.print_list()
-
 linked_list.insertionAtHeadOfNode(5)
-linked_list.print_list()
 
 linked_list.insertionAtEndofNode(7)
-linked_list.print_list()
-
 linked_list.insertionAtEndofNode(8)
-linked_list.print_list()
-
 linked_list.insertionAtEndofNode(9)
-linked_list.print_list()
-
 linked_list.insertionAtEndofNode(10)
-linked_list.print_list()
+
+middle_node = linked_list.get_node(11)  # Get a reference to the node with data 
+linked_list.insertionAtMiddleOfNode(middle_node, 99)
 
 print("Changed Linked List:")
 linked_list.print_list()
