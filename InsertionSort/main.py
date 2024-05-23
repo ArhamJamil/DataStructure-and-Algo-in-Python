@@ -18,8 +18,8 @@ def insertion_sort(arr):
         currentElement = arr[index]
         j = index - 1
 
-        while j >= 0 and currentElement < arr[j]:
-            if arr[j] > currentElement:
+        while j >= 0 and currentElement > arr[j]:
+            if arr[j] < currentElement:
                 arr[j+1] = arr[j]
                 j = j - 1
         
